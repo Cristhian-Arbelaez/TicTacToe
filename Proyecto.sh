@@ -12,10 +12,10 @@ moves=( 1 2 3 4 5 6 7 8 9 )
 
 welcome_message() {
 	clear
-	echo "========================"
-	echo "=== LETS PLAY A GAME ==="
-	echo "========================"
-	sleep 2
+	echo "========================="
+	echo "=== Juguemos un Juego ==="
+	echo "========================="
+	sleep 3
 }
 print_board () {
 	clear
@@ -31,9 +31,9 @@ player_pick(){
 	if [[ $(($turn % 2)) == 0 ]]
 	then
 		play=$player_2
-		echo -n "PLAYER 2 PICK A SQUARE: "
+		echo -n "Jugador 2 Elija un Cuadro: "
 	else 
-		echo -n "PLAYER 1 PICK A SQUARE: "
+		echo -n "Jugador 1 Elija un cuadro"
 		play=$player_1
 	fi 
 
@@ -43,7 +43,7 @@ player_pick(){
 
 	if [[ ! $square =~ ^-?[0-9]+$ ]] || [[ ! $space =~ ^[0-9]+$ ]]
 	then
-		echo " Not a valid square."
+		echo "Cuadro no Valido."
 		player_pick
 	else
 		moves[($square -1)]=$play
@@ -53,16 +53,14 @@ player_pick(){
 }
 
 check_match() {
-	if [[ ${moves[$1]} == ${moves[$2]} ]]&& \ 
-		[[ ${moves[$2]} == ${moves[$3]} ]]; then 
-			game_on=false
+	if [[ ${moves[$1]} == ${moves[$2]} ]]&& \ [[ ${moves[$2]} == ${moves[$3]} ]]; then game_on=false
 	fi
 	if  [ $game_on == false ]; then
 		if [ ${moves[$1]} == 'x' ];then
-			echo "Player one wins!"
+			echo "Jugador 1 Gana!"
 			return
 		else
-			echo "player two wins!"
+			echo "Jugador 2 Gana"
 			return
 		fi
 	fi
@@ -89,7 +87,7 @@ check_winner(){
 	
 	if [ $turn -gt 9 ]; then 
 		$game_on=false
-		echo "Its a draw!"
+		echo "Es un Empate"
 	fi
 }
 
